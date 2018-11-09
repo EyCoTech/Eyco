@@ -1,0 +1,9 @@
+Building Eyco
+
+See doc/readme-qt.rst for instructions on building Eyco QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Eyco.
+
+See doc/build-*.txt for instructions on building eycod,
+the intended-for-services, no-graphical-interface, reference
+implementation of Eyco.
