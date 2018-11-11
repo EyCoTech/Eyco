@@ -43,7 +43,6 @@
 //#include "coinexchange.h"
 //#include "yobit.h"
 #include "messagepage.h"
-#include "blockbrowser.h"
 
 #ifdef USE_NATIVE_I2P
 #include "showi2paddresses.h"
@@ -147,7 +146,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     vbox->addWidget(transactionView);
     transactionsPage->setLayout(vbox);
 
-    blockBrowser = new BlockBrowser(this);
     addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
     sendCoinsPage = new SendCoinsDialog(this);
@@ -174,7 +172,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralStackedWidget->addWidget(sendCoinsPage);
     centralStackedWidget->addWidget(masternodeManagerPage);
     centralStackedWidget->addWidget(messagePage);
-    centralStackedWidget->addWidget(blockBrowser);
 
 //    Uncomment to build EYCO Adv
 //
@@ -344,12 +341,6 @@ void BitcoinGUI::createActions()
     messageAction->setCheckable(true);
     tabGroup->addAction(messageAction);
 
-    blockAction = new QAction(QIcon(":/icons/"), tr("&Block Explorer"), this);
-    blockAction->setToolTip(tr("Explore the BlockChain"));
-    blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-    blockAction->setCheckable(true);
-    tabGroup->addAction(blockAction);
-
 //    Uncomment to build EYCO Adv
 //
 //    radioAction = new QAction(QIcon(":/icons/fury"), tr("&Radio"), this);
@@ -388,8 +379,6 @@ void BitcoinGUI::createActions()
 //    yobitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
 //    tabGroup->addAction(yobitAction);
     
-
-    connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -554,7 +543,6 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
     toolbar->addAction(masternodeManagerAction);
     toolbar->addAction(messageAction);
-    toolbar->addAction(blockAction);
     netLabel = new QLabel();
 
     QWidget *spacer = makeToolBarSpacer();
@@ -661,7 +649,6 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
         sendCoinsPage->setModel(walletModel);
         signVerifyMessageDialog->setModel(walletModel);
-        blockBrowser->setModel(walletModel);
 
         setEncryptionStatus(walletModel->getEncryptionStatus());
         connect(walletModel, SIGNAL(encryptionStatusChanged(int)), this, SLOT(setEncryptionStatus(int)));
@@ -1051,15 +1038,6 @@ void BitcoinGUI::gotoMasternodeManagerPage()
     masternodeManagerAction->setChecked(true);
     centralStackedWidget->setCurrentWidget(masternodeManagerPage);
 
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
-void BitcoinGUI::gotoBlockBrowser()
-{
-    blockAction->setChecked(true);
-    centralStackedWidget->setCurrentWidget(blockBrowser);
- 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
