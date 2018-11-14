@@ -8,9 +8,7 @@ DEFINES += BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += static
-CONFIG += openssl-linked
 CONFIG += openssl
-# QT += webkit webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
@@ -279,14 +277,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/adrenalinenodeconfigdialog.h \
     src/qt/qcustomplot.h \
     src/smessage.h \
-#    Uncomment to build EYCO Adv
-#
-#    src/qt/radio.h \
-#    src/qt/bitcointalk.h \
-#    src/qt/twitter.h \
-#    src/qt/bittrex.h \
-#    src/qt/coinexchange.h \
-#    src/qt/yobit.h \
     src/qt/messagepage.h \
     src/qt/messagemodel.h \
     src/qt/sendmessagesdialog.h \
@@ -402,13 +392,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/adrenalinenodeconfigdialog.cpp \
     src/qt/qcustomplot.cpp \
     src/smessage.cpp \
-#    Uncomment to build EYCO Adv
-#    src/qt/radio.cpp \
-#    src/qt/bitcointalk.cpp \
-#    src/qt/twitter.cpp \
-#    src/qt/bittrex.cpp \
-#    src/qt/coinexchange.cpp \
-#    src/qt/yobit.cpp \
     src/qt/messagepage.cpp \
     src/qt/messagemodel.cpp \
     src/qt/sendmessagesdialog.cpp \
@@ -443,13 +426,6 @@ FORMS += \
     src/qt/forms/masternodemanager.ui \
     src/qt/forms/addeditadrenalinenode.ui \
     src/qt/forms/adrenalinenodeconfigdialog.ui \
-#    Uncomment to build EYCO Adv
-#    src/qt/forms/radio.ui \
-#    src/qt/forms/bitcointalk.ui \
-#    src/qt/forms/twitter.ui \
-#    src/qt/forms/bittrex.ui \
-#    src/qt/forms/coinexchange.ui \
-#    src/qt/forms/yobit.ui \
     src/qt/forms/messagepage.ui \
     src/qt/forms/sendmessagesentry.ui \
     src/qt/forms/sendmessagesdialog.ui \

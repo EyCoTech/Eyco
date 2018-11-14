@@ -35,13 +35,6 @@
 #include "ui_interface.h"
 #include "masternodemanager.h"
 #include "messagemodel.h"
-// Uncomment to build EYCO Adv
-//#include "radio.h"
-//#include "bitcointalk.h"
-//#include "twitter.h"
-//#include "bittrex.h"
-//#include "coinexchange.h"
-//#include "yobit.h"
 #include "messagepage.h"
 
 #ifdef USE_NATIVE_I2P
@@ -153,15 +146,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     masternodeManagerPage = new MasternodeManager(this);
     messagePage = new MessagePage(this);
-
-//    Uncomment to build EYCO Adv
-//
-//    radioPage = new Radio(this);
-//    bitcointalkPage = new Bitcointalk(this);
-//    twitterPage = new Twitter(this);
-//    bittrexPage = new Bittrex(this);
-//    coinexchangePage = new Coinexchange(this);
-//    yobitPage = new Yobit(this);
     
     centralStackedWidget = new QStackedWidget(this);
     centralStackedWidget->setContentsMargins(0, 0, 0, 0);
@@ -172,15 +156,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralStackedWidget->addWidget(sendCoinsPage);
     centralStackedWidget->addWidget(masternodeManagerPage);
     centralStackedWidget->addWidget(messagePage);
-
-//    Uncomment to build EYCO Adv
-//
-//    centralStackedWidget->addWidget(radioPage);
-//    centralStackedWidget->addWidget(bitcointalkPage);
-//    centralStackedWidget->addWidget(twitterPage);
-//    centralStackedWidget->addWidget(bittrexPage);
-//    centralStackedWidget->addWidget(coinexchangePage);
-//    centralStackedWidget->addWidget(yobitPage);
 
     QWidget *centralWidget = new QWidget();
     QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
@@ -340,44 +315,6 @@ void BitcoinGUI::createActions()
     messageAction->setToolTip(tr("View and Send Encrypted messages"));
     messageAction->setCheckable(true);
     tabGroup->addAction(messageAction);
-
-//    Uncomment to build EYCO Adv
-//
-//    radioAction = new QAction(QIcon(":/icons/fury"), tr("&Radio"), this);
-//    radioAction->setToolTip(tr("Hip Hop"));
-//    radioAction->setCheckable(true);
-//    radioAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-//    tabGroup->addAction(radioAction);
-//    
-//    bitcointalkAction = new QAction(QIcon(":/icons/fury"), tr("&Bitcointalk"), this);
-//    bitcointalkAction->setToolTip(tr("Bitcointalk"));
-//    bitcointalkAction->setCheckable(true);
-//    bitcointalkAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
-//    tabGroup->addAction(bitcointalkAction);
-//
-//    twitterAction = new QAction(QIcon(":/icons/fury"), tr("&Twitter"), this);
-//    twitterAction->setToolTip(tr("Twitter"));
-//    twitterAction->setCheckable(true);
-//    twitterAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_8));
-//    tabGroup->addAction(twitterAction);
-//
-//    bittrexAction = new QAction(QIcon(":/icons/fury"), tr("&Bittrex"), this);
-//    bittrexAction->setToolTip(tr("Bittrex"));
-//    bittrexAction->setCheckable(true);
-//    bittrexAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_0));
-//    tabGroup->addAction(bittrexAction);
-//
-//    coinexchangeAction = new QAction(QIcon(":/icons/fury"), tr("&Coinexchange"), this);
-//    coinexchangeAction->setToolTip(tr("Coinexchange"));
-//    coinexchangeAction->setCheckable(true);
-//    coinexchangeAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
-//    tabGroup->addAction(coinexchangeAction);
-//
-//    yobitAction = new QAction(QIcon(":/icons/fury"), tr("&Yobit"), this);
-//    yobitAction->setToolTip(tr("Yobit"));
-//    yobitAction->setCheckable(true);
-//    yobitAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
-//    tabGroup->addAction(yobitAction);
     
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
@@ -393,21 +330,6 @@ void BitcoinGUI::createActions()
     connect(masternodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoMasternodeManagerPage()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(gotoMessagePage()));
-//    Uncomment to build EYCO Adv
-//
-//    connect(radioAction, SIGNAL(triggered()), this, SLOT(gotoRadioPage()));
-//    connect(radioAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(bitcointalkAction, SIGNAL(triggered()), this, SLOT(gotoBitcointalkPage()));
-//    connect(bitcointalkAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(twitterAction, SIGNAL(triggered()), this, SLOT(gotoTwitterPage()));
-//    connect(twitterAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(bittrexAction, SIGNAL(triggered()), this, SLOT(gotoBittrexPage()));
-//    connect(bittrexAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(coinexchangeAction, SIGNAL(triggered()), this, SLOT(gotoCoinexchangePage()));
-//    connect(coinexchangeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-//    connect(yobitAction, SIGNAL(triggered()), this, SLOT(gotoYobitPage()));
-//    connect(yobitAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    
 
     quitAction = new QAction(tr("E&xit"), this);
     quitAction->setToolTip(tr("Quit application"));
@@ -472,23 +394,6 @@ void BitcoinGUI::createMenuBar()
     file->addSeparator();
     file->addAction(quitAction);
 
-//    Uncomment to build EYCO Adv
-//
-//    QMenu *radio = appMenuBar->addMenu(tr("&Radio"));
-//    radio->addAction(radioAction);
-//
-//    QMenu *social = appMenuBar->addMenu(tr("&Social"));
-//    social->addAction(bitcointalkAction);
-//    social->addSeparator();
-//    social->addAction(twitterAction);
-//
-//    QMenu *exchanges = appMenuBar->addMenu(tr("&Exchanges"));
-//    exchanges->addAction(bittrexAction);
-//    exchanges->addSeparator();
-//    exchanges->addAction(coinexchangeAction);
-//    exchanges->addSeparator();
-//    exchanges->addAction(yobitAction);
-//
     QMenu *settings = appMenuBar->addMenu(tr("&Settings"));
     settings->addAction(encryptWalletAction);
     settings->addAction(changePassphraseAction);
@@ -1117,62 +1022,6 @@ void BitcoinGUI::gotoMessagePage()
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), messagePage, SLOT(exportClicked()));
 }
-
-//    Uncomment to build EYCO Adv
-//
-//void BitcoinGUI::gotoRadioPage()
-//{
-//    radioAction->setChecked(true);
-//    centralStackedWidget->setCurrentWidget(radioPage);
-//
-//    exportAction->setEnabled(false);
-//    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-//}
-//
-//void BitcoinGUI::gotoBitcointalkPage()
-//{
-//    bitcointalkAction->setChecked(true);
-//    centralStackedWidget->setCurrentWidget(bitcointalkPage);
-//
-//    exportAction->setEnabled(false);
-//    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-//}
-//
-//void BitcoinGUI::gotoTwitterPage()
-//{
-//    twitterAction->setChecked(true);
-//    centralStackedWidget->setCurrentWidget(twitterPage);
-//
-//    exportAction->setEnabled(false);
-//    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-//}
-//
-//void BitcoinGUI::gotoBittrexPage()
-//{
-//    bittrexAction->setChecked(true);
-//    centralStackedWidget->setCurrentWidget(bittrexPage);
-//
-//    exportAction->setEnabled(false);
-//    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-//}
-//
-//void BitcoinGUI::gotoCoinexchangePage()
-//{
-//    coinexchangeAction->setChecked(true);
-//    centralStackedWidget->setCurrentWidget(coinexchangePage);
-//
-//    exportAction->setEnabled(false);
-//    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-//}
-//
-//void BitcoinGUI::gotoYobitPage()
-//{
-//    yobitAction->setChecked(true);
-//    centralStackedWidget->setCurrentWidget(yobitPage);
-//
-//    exportAction->setEnabled(false);
-//    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-//}
 
 void BitcoinGUI::dragEnterEvent(QDragEnterEvent *event)
 {
