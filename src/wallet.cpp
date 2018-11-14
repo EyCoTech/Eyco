@@ -3355,9 +3355,9 @@ uint64_t CWallet::GetStakeWeight() const
     CTxDB txdb("r");
 
     LOCK2(cs_main, cs_wallet);
-    int nStakeMinConfirmations = 200;
+    int nStakeMinConfirmations = 66;
 
-    nStakeMinConfirmations = 200;
+    nStakeMinConfirmations = 66;
 
 
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
