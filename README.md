@@ -10,7 +10,7 @@ the OpenSSL Toolkit (http://www.openssl.org/).  This product includes
 cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP
 software written by Thomas Bernard.
 
-To Build Headless
+To Build Eyco Headless 
 -----------------
 
 sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
@@ -18,11 +18,8 @@ sudo apt-get install build-essential libtool autotools-dev automake pkg-config l
 sudo apt-get install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools build-essential libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev libminiupnpc-dev 
 
 sudo apt-get install software-properties-common
-
 sudo add-apt-repository ppa:bitcoin/bitcoin
-
 sudo apt-get update
-
 sudo apt-get install libdb4.8-dev libdb4.8++-dev
 
 sudo apt-get install libqrencode-dev
@@ -33,11 +30,13 @@ cd Eyco/src/secp256k1
 
 chmod +x autogen.sh
 
-sudo ./autogen.sh
+./autogen.sh
 
-sudo ./configure
+./configure
 
-sudo make && make install
+make
+
+sudo make install
 
 cd
 
@@ -58,7 +57,7 @@ LD_LIBRARY_PATH=/usr/local/lib
 export LD_LIBRARY_PATH
 
 
-To Build Qt Wallet
+To Build Eyco Qt Wallet
 ------------------
 
 sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
@@ -78,22 +77,24 @@ cd Eyco/src/secp256k1
 
 chmod +x autogen.sh
 
-sudo ./autogen.sh
+./autogen.sh
 
-sudo ./configure
+./configure
 
-sudo make && make install
+make 
+
+sudo make install
 
 cd
 
 cd Eyco/src/leveldb
 
-sudo sh build_detect_platform build_config.mk .
+sh build_detect_platform build_config.mk .
 
 cd
 
 cd Eyco
 
-sudo qmake Eyco.pro
+qmake Eyco-qt.pro
 
-sudo make -jnumofcoreshere
+make -jnumofcoreshere
