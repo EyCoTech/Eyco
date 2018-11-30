@@ -33,6 +33,7 @@ bool AppInit(int argc, char* argv[])
     boost::thread_group threadGroup;
 
     bool fRet = false;
+    fHaveGUI = false;
     try
     {
         //
@@ -77,7 +78,7 @@ bool AppInit(int argc, char* argv[])
             int ret = CommandLineRPC(argc, argv);
             exit(ret);
         }
-#if !defined(WIN32)
+#if !WIN32
         fDaemon = GetBoolArg("-daemon", false);
         if (fDaemon)
         {
