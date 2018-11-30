@@ -1529,7 +1529,7 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
 
     {
         LOCK2(cs_main, cs_wallet);
-        int nStakeMinConfirmations = 200;
+        int nStakeMinConfirmations = 66;
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
         {
             const CWalletTx* pcoin = &(*it).second;
@@ -1539,7 +1539,7 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
                 continue;
 
 
-            nStakeMinConfirmations = 200;
+            nStakeMinConfirmations = 66;
 
 
             if (nDepth < nStakeMinConfirmations)

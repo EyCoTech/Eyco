@@ -302,7 +302,7 @@ bool CheckProofOfStake(CBlockIndex* pindexPrev, const CTransaction& tx, unsigned
 
     int nDepth;
 
-	nStakeMinConfirmations = 200;
+	nStakeMinConfirmations = 66;
 	if (IsConfirmedInNPrevBlocks(txindex, pindexPrev, nStakeMinConfirmations - 1, nDepth))
 		return tx.DoS(100, error("CheckProofOfStake() : tried to stake at depth %d", nDepth + 1));
 
@@ -337,7 +337,7 @@ bool CheckKernel(CBlockIndex* pindexPrev, unsigned int nBits, int64_t nTime, con
 
 	int nDepth;
 
-	int nStakeMinConfirmations = 200;
+	int nStakeMinConfirmations = 66;
 	if (IsConfirmedInNPrevBlocks(txindex, pindexPrev, nStakeMinConfirmations - 1, nDepth))
 		return false;
     

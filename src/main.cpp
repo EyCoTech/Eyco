@@ -2153,7 +2153,7 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
 {
     CBigNum bnCentSecond = 0;  // coin age in the unit of cent-seconds
     nCoinAge = 0;
-    int nStakeMinConfirmations = 200;
+    int nStakeMinConfirmations = 66;
 
     if (IsCoinBase())
         return true;
@@ -2170,7 +2170,7 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
 
         int nSpendDepth;
         
-		nStakeMinConfirmations = 200;
+		nStakeMinConfirmations = 66;
 
 
         if (IsConfirmedInNPrevBlocks(txindex, pindexPrev, nStakeMinConfirmations - 1, nSpendDepth))
