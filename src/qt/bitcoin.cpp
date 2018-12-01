@@ -303,7 +303,6 @@ int main(int argc, char *argv[])
             }
             // Shutdown the core and its threads, but don't exit Bitcoin-Qt here
             threadGroup.interrupt_all();
-            threadGroup.join_all();
             Shutdown();
         }
         else
