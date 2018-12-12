@@ -1851,10 +1851,10 @@ bool CDarkSendPool::IsCompatibleWithSession(int64_t nDenom, CTransaction txColla
 void CDarkSendPool::GetDenominationsToString(int nDenom, std::string& strDenom){
     // Function returns as follows:
     //
-    // bit 0 - 100LOC+1 ( bit on if present )
-    // bit 1 - 10LOC+1
-    // bit 2 - 1LOC+1
-    // bit 3 - .1LOC+1
+    // bit 0 - 100EYCO+1 ( bit on if present )
+    // bit 1 - 10EYCO+1
+    // bit 2 - 1EYCO+1
+    // bit 3 - .1EYCO+1
     // bit 3 - non-denom
 
 
@@ -1910,10 +1910,10 @@ int CDarkSendPool::GetDenominations(const std::vector<CTxOut>& vout){
 
     // Function returns as follows:
     //
-    // bit 0 - 100LOC+1 ( bit on if present )
-    // bit 1 - 10LOC+1
-    // bit 2 - 1LOC+1
-    // bit 3 - .1LOC+1
+    // bit 0 - 100EYCO+1 ( bit on if present )
+    // bit 1 - 10EYCO+1
+    // bit 2 - 1EYCO+1
+    // bit 3 - .1EYCO+1
 
     return denom;
 }
