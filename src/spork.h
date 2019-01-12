@@ -26,7 +26,7 @@ using namespace boost;
 
 
 #define SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT_DEFAULT       1517688000  //Saturday, February 3, 2018 8:00:00 PM
-#define SPORK_2_MAX_VALUE_DEFAULT                             200000        //200000 EYCO  
+#define SPORK_2_MAX_VALUE_DEFAULT                             1000000        //1000000 EYCO  
 #define SPORK_3_REPLAY_BLOCKS_DEFAULT                         0
 #define SPORK_4_RECONVERGE_DEFAULT                            1420070400  //2047-1-1
 

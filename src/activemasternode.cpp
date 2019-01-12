@@ -8,7 +8,7 @@
 #include "clientversion.h"
 
 //
-// Bootup the masternode, look for a 200000 EYCO input and register on the network
+// Bootup the masternode, look for a 1000000 EYCO input and register on the network
 //
 void CActiveMasternode::ManageStatus()
 {
