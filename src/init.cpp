@@ -7,7 +7,7 @@
 #include "main.h"
 #include "chainparams.h"
 #include "txdb.h"
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "net.h"
 #include "util.h"
 #include "ui_interface.h"

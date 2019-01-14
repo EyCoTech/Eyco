@@ -30,14 +30,14 @@ void AddEditAdrenalineNode::on_okButton_clicked()
     if(ui->aliasLineEdit->text() == "")
     {
 	QMessageBox msg;
-        msg.setText("Please enter an alias.");
+        msg.setText("Please enter an alias for your Masternode.");
 	msg.exec();
 	return;
     }
     else if(ui->addressLineEdit->text() == "")
     {
 	QMessageBox msg;
-        msg.setText("Please enter an address.");
+        msg.setText("Please enter an IP or Onion address.");
 	msg.exec();
 	return;
     }
