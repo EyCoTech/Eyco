@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = Eyco-Qt
-VERSION = 1.0
+VERSION = 1.1
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 QT += core gui network printsupport
 DEFINES += ENABLE_WALLET
@@ -231,9 +231,9 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/transactionfilterproxy.h \
     src/qt/transactionview.h \
     src/qt/walletmodel.h \
-    src/rpcclient.h \
-    src/rpcprotocol.h \
-    src/rpcserver.h \
+    src/rpc/rpcclient.h \
+    src/rpc/rpcprotocol.h \
+    src/rpc/rpcserver.h \
     src/timedata.h \
     src/qt/overviewpage.h \
     src/qt/csvmodelwriter.h \
@@ -283,13 +283,13 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/sendmessagesentry.h \
     src/qt/plugins/mrichtexteditor/mrichtextedit.h \
     src/qt/qvalidatedtextedit.h \
-    src/sph_blake.h \
-    src/sph_bmw.h \
-    src/sph_groestl.h \
-    src/sph_jh.h \
-    src/sph_keccak.h \
-    src/sph_skein.h \
-    src/sph_types.h 
+    src/algo/sph_blake.h \
+    src/algo/sph_bmw.h \
+    src/algo/sph_groestl.h \
+    src/algo/sph_jh.h \
+    src/algo/sph_keccak.h \
+    src/algo/sph_skein.h \
+    src/algo/sph_types.h 
     
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -340,16 +340,16 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactionfilterproxy.cpp \
     src/qt/transactionview.cpp \
     src/qt/walletmodel.cpp \
-    src/rpcclient.cpp \
-    src/rpcprotocol.cpp \
-    src/rpcserver.cpp \
-    src/rpcdump.cpp \
-    src/rpcmisc.cpp \
-    src/rpcnet.cpp \
-    src/rpcmining.cpp \
-    src/rpcwallet.cpp \
-    src/rpcblockchain.cpp \
-    src/rpcrawtransaction.cpp \
+    src/rpc/rpcclient.cpp \
+    src/rpc/rpcprotocol.cpp \
+    src/rpc/rpcserver.cpp \
+    src/rpc/rpcdump.cpp \
+    src/rpc/rpcmisc.cpp \
+    src/rpc/rpcnet.cpp \
+    src/rpc/rpcmining.cpp \
+    src/rpc/rpcwallet.cpp \
+    src/rpc/rpcblockchain.cpp \
+    src/rpc/rpcrawtransaction.cpp \
     src/timedata.cpp \
     src/qt/overviewpage.cpp \
     src/qt/csvmodelwriter.cpp \
@@ -374,7 +374,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/darksendconfig.cpp \
     src/masternode.cpp \
     src/darksend.cpp \
-    src/rpcdarksend.cpp \
+    src/rpc/rpcdarksend.cpp \
     src/instantx.cpp \
     src/activemasternode.cpp \
     src/spork.cpp \
@@ -398,13 +398,13 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/sendmessagesentry.cpp \
     src/qt/qvalidatedtextedit.cpp \
     src/qt/plugins/mrichtexteditor/mrichtextedit.cpp \
-    src/rpcsmessage.cpp \
-    src/blake.c \
-    src/bmw.c \
-    src/groestl.c \
-    src/jh.c \
-    src/keccak.c \
-    src/skein.c 
+    src/rpc/rpcsmessage.cpp \
+    src/algo/blake.c \
+    src/algo/bmw.c \
+    src/algo/groestl.c \
+    src/algo/jh.c \
+    src/algo/keccak.c \
+    src/algo/skein.c 
 
 RESOURCES += \
     src/qt/bitcoin.qrc
