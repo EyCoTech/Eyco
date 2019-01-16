@@ -21,11 +21,6 @@ extern const std::string CLIENT_NAME;
 extern const std::string CLIENT_BUILD;
 extern const std::string CLIENT_DATE;
 
-#ifdef USE_NATIVE_I2P
-extern const std::string I2P_NATIVE_BUILD;
-extern const std::string I2P_NATIVE_DATE;
-#endif
-
 //
 // database format versioning
 //
