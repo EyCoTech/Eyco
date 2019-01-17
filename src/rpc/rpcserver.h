@@ -1,10 +1,10 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Eyco developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef _BITCOINRPC_SERVER_H_
-#define _BITCOINRPC_SERVER_H_ 1
+#ifndef _EYCORPC_SERVER_H_
+#define _EYCORPC_SERVER_H_ 1
 
 #include "uint256.h"
 #include "rpcprotocol.h"
@@ -50,7 +50,7 @@ public:
 };
 
 /**
- * Bitcoin RPC command dispatcher.
+ * Eyco RPC command dispatcher.
  */
 class CRPCTable
 {

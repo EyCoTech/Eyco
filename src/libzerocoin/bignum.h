@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Eyco developers
 // Copyright (c) 2017 The Eyco developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef BITCOIN_BIGNUM_H
-#define BITCOIN_BIGNUM_H
+#ifndef EYCO_BIGNUM_H
+#define EYCO_BIGNUM_H
 
 #include <stdexcept>
 #include <vector>
@@ -323,7 +323,7 @@ public:
     // and  0xc0de000000 is compact (0x0600c0de)
     // (0x05c0de00) would be -0x40de000000
     //
-    // Bitcoin only uses this "compact" format for encoding difficulty
+    // Eyco only uses this "compact" format for encoding difficulty
     // targets, which are unsigned 256bit quantities.  Thus, all the
     // complexities of the sign bit and using base 256 are probably an
     // implementation accident.

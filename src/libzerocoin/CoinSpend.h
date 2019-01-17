@@ -42,7 +42,7 @@ public:
     /**Generates a proof spending a zerocoin.
 	 *
 	 * To use this, provide an unspent PrivateCoin, the latest Accumulator
-	 * (e.g from the most recent Bitcoin block) containing the public part
+	 * (e.g from the most recent Eyco block) containing the public part
 	 * of the coin, a witness to that, and whatever medeta data is needed.
 	 *
 	 * Once constructed, this proof can be serialized and sent.

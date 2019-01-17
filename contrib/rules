@@ -2,11 +2,11 @@
 # -*- mode: makefile; coding: utf-8 -*-
 
 #DEB_MAKE_CHECK_TARGET = test_eyco
-#build/bitcoind::
+#build/eycod::
 #	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_eyco)
 
-DEB_INSTALL_EXAMPLES_bitcoind += debian/examples/*
-DEB_INSTALL_MANPAGES_bitcoind += debian/manpages/*
+DEB_INSTALL_EXAMPLES_eycod += debian/examples/*
+DEB_INSTALL_MANPAGES_eycod += debian/manpages/*
 
 %:
 	dh --with bash-completion $@

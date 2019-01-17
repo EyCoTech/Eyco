@@ -1,5 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Eyco developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -128,11 +128,11 @@ Value getnewaddress(const Array& params, bool fHelp)
 
     pwalletMain->SetAddressBookName(keyID, strAccount);
 
-    return CBitcoinAddress(keyID).ToString();
+    return CEycoAddress(keyID).ToString();
 }
 
 
-CBitcoinAddress GetAccountAddress(string strAccount, bool bForceNew=false)
+CEycoAddress GetAccountAddress(string strAccount, bool bForceNew=false)
 {
     CWalletDB walletdb(pwalletMain->strWalletFile);
 
@@ -167,7 +167,7 @@ CBitcoinAddress GetAccountAddress(string strAccount, bool bForceNew=false)
         walletdb.WriteAccount(strAccount, account);
     }
 
-    return CBitcoinAddress(account.vchPubKey.GetID());
+    return CEycoAddress(account.vchPubKey.GetID());
 }
 
 Value getaccountaddress(const Array& params, bool fHelp)
@@ -196,7 +196,7 @@ Value setaccount(const Array& params, bool fHelp)
             "setaccount <eycoaddress> <account>\n"
             "Sets the account associated with the given address.");
 
-    CBitcoinAddress address(params[0].get_str());
+    CEycoAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Eyco address");
 
@@ -226,7 +226,7 @@ Value getaccount(const Array& params, bool fHelp)
             "getaccount <eycoaddress>\n"
             "Returns the account associated with the given address.");
 
-    CBitcoinAddress address(params[0].get_str());
+    CEycoAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Eyco address");
 
@@ -249,9 +249,9 @@ Value getaddressesbyaccount(const Array& params, bool fHelp)
 
     // Find all addresses that have the given account
     Array ret;
-    BOOST_FOREACH(const PAIRTYPE(CBitcoinAddress, string)& item, pwalletMain->mapAddressBook)
+    BOOST_FOREACH(const PAIRTYPE(CEycoAddress, string)& item, pwalletMain->mapAddressBook)
     {
-        const CBitcoinAddress& address = item.first;
+        const CEycoAddress& address = item.first;
         const string& strName = item.second;
         if (strName == strAccount)
             ret.push_back(address.ToString());
@@ -267,7 +267,7 @@ Value sendtoaddress(const Array& params, bool fHelp)
             "<amount> is a real and is rounded to the nearest 0.000001"
             + HelpRequiringPassphrase());
 
-    CBitcoinAddress address(params[0].get_str());
+    CEycoAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Eyco address");
 
@@ -315,12 +315,12 @@ Value listaddressgroupings(const Array& params, bool fHelp)
         BOOST_FOREACH(CTxDestination address, grouping)
         {
             Array addressInfo;
-            addressInfo.push_back(CBitcoinAddress(address).ToString());
+            addressInfo.push_back(CEycoAddress(address).ToString());
             addressInfo.push_back(ValueFromAmount(balances[address]));
             {
                 LOCK(pwalletMain->cs_wallet);
-                if (pwalletMain->mapAddressBook.find(CBitcoinAddress(address).Get()) != pwalletMain->mapAddressBook.end())
-                    addressInfo.push_back(pwalletMain->mapAddressBook.find(CBitcoinAddress(address).Get())->second);
+                if (pwalletMain->mapAddressBook.find(CEycoAddress(address).Get()) != pwalletMain->mapAddressBook.end())
+                    addressInfo.push_back(pwalletMain->mapAddressBook.find(CEycoAddress(address).Get())->second);
             }
             jsonGrouping.push_back(addressInfo);
         }
@@ -341,7 +341,7 @@ Value signmessage(const Array& params, bool fHelp)
     string strAddress = params[0].get_str();
     string strMessage = params[1].get_str();
 
-    CBitcoinAddress addr(strAddress);
+    CEycoAddress addr(strAddress);
     if (!addr.IsValid())
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid address");
 
@@ -371,8 +371,8 @@ Value getreceivedbyaddress(const Array& params, bool fHelp)
             "getreceivedbyaddress <eycoaddress> [minconf=1]\n"
             "Returns the total amount received by <eycoaddress> in transactions with at least [minconf] confirmations.");
 
-    // Bitcoin address
-    CBitcoinAddress address = CBitcoinAddress(params[0].get_str());
+    // Eyco address
+    CEycoAddress address = CEycoAddress(params[0].get_str());
     CScript scriptPubKey;
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Eyco address");
@@ -601,7 +601,7 @@ Value sendfrom(const Array& params, bool fHelp)
             + HelpRequiringPassphrase());
 
     string strAccount = AccountFromValue(params[0]);
-    CBitcoinAddress address(params[1].get_str());
+    CEycoAddress address(params[1].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Eyco address");
     int64_t nAmount = AmountFromValue(params[2]);
@@ -659,13 +659,13 @@ Value sendmany(const Array& params, bool fHelp)
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
         wtx.mapValue["comment"] = params[3].get_str();
 
-    set<CBitcoinAddress> setAddress;
+    set<CEycoAddress> setAddress;
     vector<pair<CScript, int64_t> > vecSend;
 
     int64_t totalAmount = 0;
     BOOST_FOREACH(const Pair& s, sendTo)
     {
-        CBitcoinAddress address(s.name_);
+        CEycoAddress address(s.name_);
         if (!address.IsValid())
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid Eyco address: ")+s.name_);
 
@@ -737,8 +737,8 @@ Value addmultisigaddress(const Array& params, bool fHelp)
     {
         const std::string& ks = keys[i].get_str();
 
-        // Case 1: Bitcoin address and we have full public key:
-        CBitcoinAddress address(ks);
+        // Case 1: Eyco address and we have full public key:
+        CEycoAddress address(ks);
         if (pwalletMain && address.IsValid())
         {
             CKeyID keyID;
@@ -776,7 +776,7 @@ Value addmultisigaddress(const Array& params, bool fHelp)
         throw runtime_error("AddCScript() failed");
 
     pwalletMain->SetAddressBookName(innerID, strAccount);
-    return CBitcoinAddress(innerID).ToString();
+    return CEycoAddress(innerID).ToString();
 }
 
 Value addredeemscript(const Array& params, bool fHelp)
@@ -801,7 +801,7 @@ Value addredeemscript(const Array& params, bool fHelp)
         throw runtime_error("AddCScript() failed");
 
     pwalletMain->SetAddressBookName(innerID, strAccount);
-    return CBitcoinAddress(innerID).ToString();
+    return CEycoAddress(innerID).ToString();
 }
 
 struct tallyitem
@@ -828,7 +828,7 @@ Value ListReceived(const Array& params, bool fByAccounts)
         fIncludeEmpty = params[1].get_bool();
 
     // Tally
-    map<CBitcoinAddress, tallyitem> mapTally;
+    map<CEycoAddress, tallyitem> mapTally;
     for (map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end(); ++it)
     {
         const CWalletTx& wtx = (*it).second;
@@ -855,11 +855,11 @@ Value ListReceived(const Array& params, bool fByAccounts)
     // Reply
     Array ret;
     map<string, tallyitem> mapAccountTally;
-    BOOST_FOREACH(const PAIRTYPE(CBitcoinAddress, string)& item, pwalletMain->mapAddressBook)
+    BOOST_FOREACH(const PAIRTYPE(CEycoAddress, string)& item, pwalletMain->mapAddressBook)
     {
-        const CBitcoinAddress& address = item.first;
+        const CEycoAddress& address = item.first;
         const string& strAccount = item.second;
-        map<CBitcoinAddress, tallyitem>::iterator it = mapTally.find(address);
+        map<CEycoAddress, tallyitem>::iterator it = mapTally.find(address);
         if (it == mapTally.end() && !fIncludeEmpty)
             continue;
 
@@ -940,7 +940,7 @@ Value listreceivedbyaccount(const Array& params, bool fHelp)
 
 static void MaybePushAddress(Object & entry, const CTxDestination &dest)
 {
-    CBitcoinAddress addr;
+    CEycoAddress addr;
     if (addr.Set(dest))
         entry.push_back(Pair("address", addr.ToString()));
 }

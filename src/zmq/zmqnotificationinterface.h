@@ -1,9 +1,9 @@
-// Copyright (c) 2015 The Bitcoin Core developers
+// Copyright (c) 2018 - 2019 The Eyco Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
-#define BITCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#ifndef EYCO_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#define EYCO_ZMQ_ZMQNOTIFICATIONINTERFACE_H
 
 #include "validationinterface.h"
 #include <string>
@@ -35,4 +35,4 @@ private:
     std::list<CZMQAbstractNotifier*> notifiers;
 };
 
-#endif // BITCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#endif // EYCO_ZMQ_ZMQNOTIFICATIONINTERFACE_H

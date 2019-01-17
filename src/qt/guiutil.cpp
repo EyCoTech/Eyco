@@ -2,9 +2,9 @@
 
 #include "guiutil.h"
 
-#include "bitcoinaddressvalidator.h"
+#include "eycoaddressvalidator.h"
 #include "walletmodel.h"
-#include "bitcoinunits.h"
+#include "eycounits.h"
 
 #include "util.h"
 #include "init.h"
@@ -54,7 +54,7 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont bitcoinAddressFont()
+QFont eycoAddressFont()
 {
     QFont font("Monospace");
 #if QT_VERSION >= 0x040800
@@ -67,9 +67,9 @@ QFont bitcoinAddressFont()
 
 void setupAddressWidget(QLineEdit *widget, QWidget *parent)
 {
-    widget->setMaxLength(BitcoinAddressValidator::MaxAddressLength);
-    widget->setValidator(new BitcoinAddressValidator(parent));
-    widget->setFont(bitcoinAddressFont());
+    widget->setMaxLength(EycoAddressValidator::MaxAddressLength);
+    widget->setValidator(new EycoAddressValidator(parent));
+    widget->setFont(eycoAddressFont());
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
@@ -81,7 +81,7 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseEycoURI(const QUrl &uri, SendCoinsRecipient *out)
 {
     // NovaCoin: check prefix
     if(uri.scheme() != QString("eyco"))
@@ -109,7 +109,7 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitcoinUnits::parse(BitcoinUnits::BTC, i->second, &rv.amount))
+                if(!EycoUnits::parse(EycoUnits::EYCO, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -127,18 +127,18 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
+bool parseEycoURI(QString uri, SendCoinsRecipient *out)
 {
     // Convert eyco:// to eyco:
     //
-    //    Cannot handle this later, because bitcoin:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because eyco:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
     if(uri.startsWith("eyco://"))
     {
         uri.replace(0, 12, "eyco:");
     }
     QUrl uriInstance(uri);
-    return parseBitcoinURI(uriInstance, out);
+    return parseEycoURI(uriInstance, out);
 }
 
 QString HtmlEscape(const QString& str, bool fMultiLine)
@@ -284,7 +284,7 @@ boost::filesystem::path static StartupShortcutPath()
 
 bool GetStartOnSystemStartup()
 {
-    // check for Bitcoin.lnk
+    // check for Eyco.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -399,7 +399,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         boost::filesystem::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out|std::ios_base::trunc);
         if (!optionFile.good())
             return false;
-        // Write a bitcoin.desktop file to the autostart directory:
+        // Write a eyco.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         optionFile << "Name=Eyco\n";

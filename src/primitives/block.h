@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2013 The Bitcoin developers
+// Copyright (c) 2009-2013 The Eyco developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_PRIMITIVES_BLOCK_H
-#define BITCOIN_PRIMITIVES_BLOCK_H
+#ifndef EYCO_PRIMITIVES_BLOCK_H
+#define EYCO_PRIMITIVES_BLOCK_H
 
 #include "primitives/transaction.h"
 #include "serialize.h"
@@ -170,4 +170,4 @@ struct CBlockLocator
     }
 };
 
-#endif // BITCOIN_PRIMITIVES_BLOCK_H
+#endif // EYCO_PRIMITIVES_BLOCK_H

@@ -162,7 +162,7 @@ public:
 
 
 // -- get at the data
-class CBitcoinAddress_B : public CBitcoinAddress
+class CEycoAddress_B : public CEycoAddress
 {
 public:
     uint8_t getVersion()

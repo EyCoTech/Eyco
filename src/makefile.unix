@@ -113,7 +113,7 @@ OBJS= \
     obj/key.o \
     obj/eckey.o \
     obj/init.o \
-    obj/bitcoind.o \
+    obj/eycod.o \
     obj/keystore.o \
     obj/core.o \
     obj/main.o \

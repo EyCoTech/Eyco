@@ -47,7 +47,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../bitcoin.qrc">
+        <iconset resource="../eyco.qrc">
          <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
        </property>
        <property name="shortcut">
@@ -64,7 +64,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../bitcoin.qrc">
+        <iconset resource="../eyco.qrc">
          <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
        </property>
        <property name="shortcut">
@@ -81,7 +81,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../bitcoin.qrc">
+        <iconset resource="../eyco.qrc">
          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
        </property>
       </widget>
@@ -178,7 +178,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../bitcoin.qrc"/>
+  <include location="../eyco.qrc"/>
  </resources>
  <connections/>
 </ui>

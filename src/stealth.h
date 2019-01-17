@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_STEALTH_H
-#define BITCOIN_STEALTH_H
+#ifndef EYCO_STEALTH_H
+#define EYCO_STEALTH_H
 
 #include "util.h"
 #include "serialize.h"
@@ -115,5 +115,5 @@ int StealthSharedToSecretSpend(ec_secret& sharedS, ec_secret& spendSecret, ec_se
 bool IsStealthAddress(const std::string& encodedAddress);
 
 
-#endif  // BITCOIN_STEALTH_H
+#endif  // EYCO_STEALTH_H
 

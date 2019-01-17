@@ -84,7 +84,7 @@ in 500ms.
 ThreadRPCServer : Remote procedure call handler, listens on port 10823
 for connections and services them.
 
-ThreadBitcoinMiner : Generates bitcoins
+ThreadEycoMiner : Generates eycos
 
 ThreadMapPort : Universal plug-and-play startup/shutdown
 

@@ -1,6 +1,6 @@
 usr/local/bin/eyco-qt usr/bin
-share/pixmaps/bitcoin32.xpm usr/share/pixmaps
-share/pixmaps/bitcoin16.xpm usr/share/pixmaps
-share/pixmaps/bitcoin128.png usr/share/pixmaps
+share/pixmaps/eyco32.xpm usr/share/pixmaps
+share/pixmaps/eyco16.xpm usr/share/pixmaps
+share/pixmaps/eyco128.png usr/share/pixmaps
 debian/eyco-qt.desktop usr/share/applications
 debian/eyco-qt.protocol usr/share/kde4/services/

@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="pixmap">
-      <pixmap resource="../bitcoin.qrc">:/images/about</pixmap>
+      <pixmap resource="../eyco.qrc">:/images/about</pixmap>
      </property>
     </widget>
    </item>
@@ -91,9 +91,9 @@
         <cursorShape>IBeamCursor</cursorShape>
        </property>
        <property name="text">
-        <string>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2018 The Eyco developers</string>
+        <string>
+Copyright © 2018 - 2019 The Eyco developers
+https://eyco-tech.net</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -152,7 +152,7 @@ This product includes software developed by the OpenSSL Project for use in the O
   </layout>
  </widget>
  <resources>
-  <include location="../bitcoin.qrc"/>
+  <include location="../eyco.qrc"/>
  </resources>
  <connections>
   <connection>

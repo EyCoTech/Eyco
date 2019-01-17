@@ -48,7 +48,7 @@ void AddEditAdrenalineNode::on_okButton_clicked()
 	c.sAddress = ui->addressLineEdit->text().toStdString();
         CKey secret;
         secret.MakeNewKey(false);
-        c.sMasternodePrivKey = CBitcoinSecret(secret).ToString();
+        c.sMasternodePrivKey = CEycoSecret(secret).ToString();
 	
         CWalletDB walletdb(pwalletMain->strWalletFile);
         CAccount account;
@@ -86,7 +86,7 @@ void AddEditAdrenalineNode::on_okButton_clicked()
             walletdb.WriteAccount(c.sAlias, account);
         }
 
-        c.sCollateralAddress = CBitcoinAddress(account.vchPubKey.GetID()).ToString();
+        c.sCollateralAddress = CEycoAddress(account.vchPubKey.GetID()).ToString();
 
         pwalletMain->mapMyAdrenalineNodes.insert(make_pair(c.sAddress, c));
 	walletdb.WriteAdrenalineNodeConfig(c.sAddress, c);

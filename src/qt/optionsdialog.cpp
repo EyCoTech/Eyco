@@ -1,7 +1,7 @@
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "bitcoinunits.h"
+#include "eycounits.h"
 #include "monitoreddatamapper.h"
 #include "netbase.h"
 #include "optionsmodel.h"
@@ -72,7 +72,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
         }
     }
 
-    ui->unit->setModel(new BitcoinUnits(this));
+    ui->unit->setModel(new EycoUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new MonitoredDataMapper(this);
@@ -105,7 +105,7 @@ void OptionsDialog::setModel(OptionsModel *model)
         mapper->toFirst();
     }
 
-    /* update the display unit, to not use the default ("BTC") */
+    /* update the display unit, to not use the default ("EYCO") */
     updateDisplayUnit();
 
     /* warn only when language selection changes by user action (placed here so init via mapper doesn't trigger this) */
@@ -121,7 +121,7 @@ void OptionsDialog::setMapper()
     /* Main */
     mapper->addMapping(ui->transactionFee, OptionsModel::Fee);
     mapper->addMapping(ui->reserveBalance, OptionsModel::ReserveBalance);
-    mapper->addMapping(ui->bitcoinAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->eycoAtStartup, OptionsModel::StartAtStartup);
 
     /* Network */
     mapper->addMapping(ui->mapPortUpnp, OptionsModel::MapPortUPnP);

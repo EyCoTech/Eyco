@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Eyco developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_BIGNUM_H
-#define BITCOIN_BIGNUM_H
+#ifndef EYCO_BIGNUM_H
+#define EYCO_BIGNUM_H
 
 #include "serialize.h"
 #include "uint256.h"

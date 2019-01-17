@@ -4,7 +4,7 @@
 #include "sendmessagesdialog.h"
 #include "mrichtextedit.h"
 #include "messagemodel.h"
-#include "bitcoingui.h"
+#include "eycogui.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
 

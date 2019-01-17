@@ -8,7 +8,7 @@ namespace Ui {
 }
 class ClientModel;
 
-/** Local Bitcoin RPC console. */
+/** Local Eyco RPC console. */
 class RPCConsole: public QDialog
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ private slots:
     void on_tabWidget_currentChanged(int index);
     /** open the debug.log from the current datadir */
     void on_openDebugLogfileButton_clicked();
-    /** display messagebox with program parameters (same as bitcoin-qt --help) */
+    /** display messagebox with program parameters (same as eyco-qt --help) */
     void on_showCLOptionsButton_clicked();
     /** change the time range of the network traffic graph */
     void on_sldGraphRange_valueChanged(int value);

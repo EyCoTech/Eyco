@@ -1,6 +1,6 @@
 #include "optionsmodel.h"
 
-#include "bitcoinunits.h"
+#include "eycounits.h"
 #include "init.h"
 #include "wallet.h"
 #include "walletdb.h"
@@ -39,7 +39,7 @@ void OptionsModel::Init()
     QSettings settings;
 
     // These are Qt-only settings:
-    nDisplayUnit = settings.value("nDisplayUnit", BitcoinUnits::BTC).toInt();
+    nDisplayUnit = settings.value("nDisplayUnit", EycoUnits::EYCO).toInt();
     fMinimizeToTray = settings.value("fMinimizeToTray", false).toBool();
     fMinimizeOnClose = settings.value("fMinimizeOnClose", false).toBool();
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
@@ -57,7 +57,7 @@ void OptionsModel::Init()
     nDarksendRounds = settings.value("nDarksendRounds").toLongLong();
     nAnonymizeEycoAmount = settings.value("nAnonymizeEycoAmount").toLongLong();
 
-    // These are shared with core Bitcoin; we want
+    // These are shared with core Eyco; we want
     // command-line options to override the GUI settings:
     if (settings.contains("fUseUPnP"))
         SoftSetBoolArg("-upnp", settings.value("fUseUPnP").toBool());

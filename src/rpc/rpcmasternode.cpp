@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Eyco developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2018-2019 The Eycotech developers
 // Distributed under the MIT/X11 software license, see the accompanying
@@ -85,7 +85,7 @@ Value obfuscation(const Array& params, bool fHelp)
             "<amount> is a real and will be rounded to the next 0.1" +
             HelpRequiringPassphrase());
 
-    CBitcoinAddress address(params[0].get_str());
+    CEycoAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Crave address");
 
@@ -290,7 +290,7 @@ Value listmasternodes(const Array& params, bool fHelp)
         if (mn != NULL) {
             if (strFilter != "" && strTxHash.find(strFilter) == string::npos &&
                 mn->Status().find(strFilter) == string::npos &&
-                CBitcoinAddress(mn->pubKeyCollateralAddress.GetID()).ToString().find(strFilter) == string::npos) continue;
+                CEycoAddress(mn->pubKeyCollateralAddress.GetID()).ToString().find(strFilter) == string::npos) continue;
 
             std::string strStatus = mn->Status();
             std::string strHost;
@@ -304,7 +304,7 @@ Value listmasternodes(const Array& params, bool fHelp)
             obj.push_back(Pair("txhash", strTxHash));
             obj.push_back(Pair("outidx", (uint64_t)oIdx));
             obj.push_back(Pair("status", strStatus));
-            obj.push_back(Pair("addr", CBitcoinAddress(mn->pubKeyCollateralAddress.GetID()).ToString()));
+            obj.push_back(Pair("addr", CEycoAddress(mn->pubKeyCollateralAddress.GetID()).ToString()));
             obj.push_back(Pair("ip", mn->addr.ToStringIP()));
             obj.push_back(Pair("port", mn->addr.GetPort()));
             obj.push_back(Pair("version", mn->protocolVersion));
@@ -408,7 +408,7 @@ Value masternodecurrent (const Array& params, bool fHelp)
 
         obj.push_back(Pair("protocol", (int64_t)winner->protocolVersion));
         obj.push_back(Pair("txhash", winner->vin.prevout.hash.ToString()));
-        obj.push_back(Pair("pubkey", CBitcoinAddress(winner->pubKeyCollateralAddress.GetID()).ToString()));
+        obj.push_back(Pair("pubkey", CEycoAddress(winner->pubKeyCollateralAddress.GetID()).ToString()));
         obj.push_back(Pair("lastseen", (winner->lastPing == CMasternodePing()) ? winner->sigTime : (int64_t)winner->lastPing.sigTime));
         obj.push_back(Pair("activeseconds", (winner->lastPing == CMasternodePing()) ? 0 : (int64_t)(winner->lastPing.sigTime - winner->sigTime)));
         return obj;
@@ -630,7 +630,7 @@ Value createmasternodekey (const Array& params, bool fHelp)
     CKey secret;
     secret.MakeNewKey(false);
 
-    return CBitcoinSecret(secret).ToString();
+    return CEycoSecret(secret).ToString();
 }
 
 Value getmasternodeoutputs (const Array& params, bool fHelp)
@@ -757,7 +757,7 @@ Value getmasternodestatus (const Array& params, bool fHelp)
         mnObj.push_back(Pair("txhash", activeMasternode.vin.prevout.hash.ToString()));
         mnObj.push_back(Pair("outputidx", (uint64_t)activeMasternode.vin.prevout.n));
         mnObj.push_back(Pair("netaddr", activeMasternode.service.ToString()));
-        mnObj.push_back(Pair("addr", CBitcoinAddress(pmn->pubKeyCollateralAddress.GetID()).ToString()));
+        mnObj.push_back(Pair("addr", CEycoAddress(pmn->pubKeyCollateralAddress.GetID()).ToString()));
         mnObj.push_back(Pair("status", activeMasternode.status));
         mnObj.push_back(Pair("message", activeMasternode.GetStatus()));
         return mnObj;

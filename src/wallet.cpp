@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Eyco developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -154,7 +154,7 @@ bool CWallet::LoadCScript(const CScript& redeemScript)
      * these. Do not add them to the wallet and warn. */
     if (redeemScript.size() > MAX_SCRIPT_ELEMENT_SIZE)
     {
-        std::string strAddr = CBitcoinAddress(redeemScript.GetID()).ToString();
+        std::string strAddr = CEycoAddress(redeemScript.GetID()).ToString();
         LogPrintf("%s: Warning: This wallet contains a redeemScript of size %u which exceeds maximum size %i thus can never be redeemed. Do not use address %s.\n",
             __func__, redeemScript.size(), MAX_SCRIPT_ELEMENT_SIZE, strAddr);
         return true;
@@ -2501,7 +2501,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                 {
                     // Fill a vout to ourself
                     // TODO: pass in scriptChange instead of reservekey so
-                    // change transaction isn't always pay-to-bitcoin-address
+                    // change transaction isn't always pay-to-eyco-address
                     CScript scriptChange;
 
                     // coin control: send change to custom address
@@ -2768,7 +2768,7 @@ bool CWallet::UnlockStealthAddresses(const CKeyingMaterial& vMasterKeyIn)
             continue;
         
         CKeyID ckid = pubKey.GetID();
-        CBitcoinAddress addr(ckid);
+        CEycoAddress addr(ckid);
         
         StealthKeyMetaMap::iterator mi = mapStealthKeyMeta.find(ckid);
         if (mi == mapStealthKeyMeta.end())
@@ -2856,7 +2856,7 @@ bool CWallet::UnlockStealthAddresses(const CKeyingMaterial& vMasterKeyIn)
         if (fDebug)
         {
             CKeyID keyID = cpkT.GetID();
-            CBitcoinAddress coinAddress(keyID);
+            CEycoAddress coinAddress(keyID);
             printf("Adding secret to key %s.\n", coinAddress.ToString().c_str());
         };
         
@@ -3053,7 +3053,7 @@ bool CWallet::SendStealthMoneyToDestination(CStealthAddress& sxAddress, int64_t 
     
     CKeyID ckidTo = cpkTo.GetID();
     
-    CBitcoinAddress addrTo(ckidTo);
+    CEycoAddress addrTo(ckidTo);
     
     if (SecretToPublicKey(ephem_secret, ephem_pubkey) != 0)
     {
@@ -3087,7 +3087,7 @@ bool CWallet::SendStealthMoneyToDestination(CStealthAddress& sxAddress, int64_t 
         };
     };
     
-    // -- Parse Bitcoin address
+    // -- Parse Eyco address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(addrTo.Get());
     
@@ -3219,7 +3219,7 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
                     std::vector<uint8_t> vchEmpty;
                     AddCryptedKey(cpkE, vchEmpty);
                     CKeyID keyId = cpkE.GetID();
-                    CBitcoinAddress coinAddress(keyId);
+                    CEycoAddress coinAddress(keyId);
                     std::string sLabel = it->Encoded();
                     SetAddressBookName(keyId, sLabel);
                     
@@ -3282,7 +3282,7 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
                     CKeyID keyID = cpkT.GetID();
                     if (fDebug)
                     {
-                        CBitcoinAddress coinAddress(keyID);
+                        CEycoAddress coinAddress(keyID);
                         printf("Adding key %s.\n", coinAddress.ToString().c_str());
                     };
                     
@@ -3569,7 +3569,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
         CTxDestination address1;
         ExtractDestination(payee, address1);
-        CBitcoinAddress address2(address1);
+        CEycoAddress address2(address1);
 
         LogPrintf("Masternode payment to %s\n", address2.ToString().c_str());
     }
@@ -3729,7 +3729,7 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nV
     if (sNarr.length() > 24)
         return _("Narration must be 24 characters or less.");
 
-    // Parse Bitcoin address
+    // Parse Eyco address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address);
 
@@ -3939,7 +3939,7 @@ bool CWallet::SetAddressBookName(const CTxDestination& address, const string& st
                              (fUpdated ? CT_UPDATED : CT_NEW) );
     if (!fFileBacked)
         return false;
-    return CWalletDB(strWalletFile).WriteName(CBitcoinAddress(address).ToString(), strName);
+    return CWalletDB(strWalletFile).WriteName(CEycoAddress(address).ToString(), strName);
 }
 
 bool CWallet::DelAddressBookName(const CTxDestination& address)
@@ -3954,7 +3954,7 @@ bool CWallet::DelAddressBookName(const CTxDestination& address)
 
     if (!fFileBacked)
         return false;
-    return CWalletDB(strWalletFile).EraseName(CBitcoinAddress(address).ToString());
+    return CWalletDB(strWalletFile).EraseName(CEycoAddress(address).ToString());
 }
 
 bool CWallet::SetDefaultKey(const CPubKey &vchPubKey)

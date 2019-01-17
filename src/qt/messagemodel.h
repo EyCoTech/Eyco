@@ -93,8 +93,8 @@ public:
         SentDateTime = 1, /**< Time Sent */
         ReceivedDateTime = 2, /**< Time Received */
         Label = 3,   /**< User specified label */
-        ToAddress = 4, /**< To Bitcoin address */
-        FromAddress = 5, /**< From Bitcoin address */
+        ToAddress = 4, /**< To Eyco address */
+        FromAddress = 5, /**< From Eyco address */
         Message = 6, /**< Plaintext */
         TypeInt = 7, /**< Plaintext */
         Key = 8, /**< chKey */
