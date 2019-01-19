@@ -100,10 +100,10 @@ EycoGUI::EycoGUI(QWidget *parent):
     prevBlocks(0),
     nWeight(0)
 {
-    resize(1100, 600);
+    resize(1100, 660);
     QFontDatabase::addApplicationFont(":/fonts/Bebas");
     setWindowTitle(tr("Eyco") + " - " + tr("Wallet"));
-    qApp->setStyleSheet("QMainWindow { background-image:url(:images/bkg);border:none; } #frame { } QToolBar QLabel { padding-top: 0px;padding-bottom: 0px;spacing: 10px;} QToolBar QLabel:item { padding-top: 0px;padding-bottom: 0px;spacing: 10px;} #toolbar2 { border:none;width:0px;hight:0px;padding-top:40px;padding-bottom:0px; background-color: transparent; } #labelMiningIcon { padding-left:5px;font-family:Century Gothic;width:100%;font-size:10px;text-align:center;color:black; } QMenu { background-color: qlineargradient(spread:pad, x1:0.511, y1:1, x2:0.482909, y2:0, stop:0 rgba(232,232,232), stop:1 rgba(232,232,232)); color: black; padding-bottom:10px; } QMenu::item { color: black; background: transparent; } QMenu::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgba(99,99,99,45), stop: 1 rgba(99,99,99,45)); } QMenuBar { background-color: transparent; color: black; } QMenuBar::item { font-size:12px;padding-bottom:3px;padding-top:3px;padding-left:15px;padding-right:15px;color: black; background-color: transparent; } QMenuBar::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgba(99,99,99,45), stop: 1 rgba(99,99,99,45)); }");
+    qApp->setStyleSheet("QMainWindow { background-image:url(:images/bkg);border:none; } #frame { } QToolBar QLabel { padding-top: 0px;padding-bottom: 0px;spacing: 10px;} QToolBar QLabel:item { padding-top: 0px;padding-bottom: 0px;spacing: 10px;} #toolbar2 { border:none;width:0px;hight:0px;padding-top:20px;padding-bottom:0px; background-color: #2E5E65; } #labelMiningIcon { padding-left:0px;font-family:Century Gothic;width:100%;font-size:10px;text-align:center;color:white; } QMenu { background-color: qlineargradient(spread:pad, x1:0.511, y1:1, x2:0.482909, y2:0, stop:0 rgba(232,232,232), stop:1 rgba(232,232,232)); color: white; padding-bottom:10px; } QMenu::item { color: white; background: #2E5E65; } QMenu::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgba(99,99,99,45), stop: 1 rgba(99,99,99,45)); } QMenuBar { background-color: #2E5E65; color: white; } QMenuBar::item { font-size:12px;padding-bottom:3px;padding-top:3px;padding-left:10px;padding-right:10px;color: white; background-color: #2E5E65; } QMenuBar::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgba(99,99,99,45), stop: 1 rgba(99,99,99,45)); }");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/eyco"));
     setWindowIcon(QIcon(":icons/eyco"));
@@ -171,7 +171,7 @@ EycoGUI::EycoGUI(QWidget *parent):
     QWidget *frameBlocks = new QWidget();
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    frameBlocks->setStyleSheet("QWidget { background: none; margin-bottom: 5px; }");
+    frameBlocks->setStyleSheet("QWidget { background: #2E5E65; margin-bottom: 5px; }");
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
@@ -218,7 +218,7 @@ EycoGUI::EycoGUI(QWidget *parent):
         QString curStyle = qApp->style()->metaObject()->className();
         if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
         {
-            progressBar->setStyleSheet("QProgressBar { color: #2DF8FB;  background: transparent; border: 1px solid black; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: transparent; margin: 0px; }");
+            progressBar->setStyleSheet("QProgressBar { color: #2E5E65;  background: #2E5E65; border: 1px solid black; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: transparent; margin: 0px; }");
         }
     }
 
@@ -226,7 +226,7 @@ EycoGUI::EycoGUI(QWidget *parent):
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
     statusBar()->setObjectName("statusBar");
-    statusBar()->setStyleSheet("#statusBar { color: #2DF8FB; background: transparent; }");
+    statusBar()->setStyleSheet("#statusBar { color: #2E5E65; background: #2E5E65; }");
 
     syncIconMovie = new QMovie(fUseBlackTheme ? ":/movies/update_spinner_black" : ":/movies/update_spinner", "mng", this);
 
@@ -267,29 +267,29 @@ void EycoGUI::createActions()
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
-    receiveCoinsAction = new QAction(QIcon(":/icons/"), tr("&Receive"), this);
-    receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving payments"));
-    receiveCoinsAction->setCheckable(true);
-    receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
-    tabGroup->addAction(receiveCoinsAction);
-
     sendCoinsAction = new QAction(QIcon(":/icons/"), tr("&Send"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a Eyco address"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(sendCoinsAction);
 
+    receiveCoinsAction = new QAction(QIcon(":/icons/"), tr("&Receive"), this);
+    receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving payments"));
+    receiveCoinsAction->setCheckable(true);
+    receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
+    tabGroup->addAction(receiveCoinsAction);
+
+    addressBookAction = new QAction(QIcon(":/icons/"), tr("&Payee"), this);
+    addressBookAction->setToolTip(tr("Edit the list of stored addresses and labels"));
+    addressBookAction->setCheckable(true);
+    addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
+    tabGroup->addAction(addressBookAction);
+
     historyAction = new QAction(QIcon(":/icons/"), tr("&Transactions"), this);
     historyAction->setToolTip(tr("Browse transaction history"));
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
-
-    addressBookAction = new QAction(QIcon(":/icons/"), tr("&Addresses"), this);
-    addressBookAction->setToolTip(tr("Edit the list of stored addresses and labels"));
-    addressBookAction->setCheckable(true);
-    addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
-    tabGroup->addAction(addressBookAction);
 
     masternodeManagerAction = new QAction(QIcon(":/icons/"), tr("&Masternodes"), this);
     masternodeManagerAction->setToolTip(tr("Show Master Nodes status and configure your nodes."));
@@ -376,7 +376,6 @@ void EycoGUI::createMenuBar()
     file->addAction(exportAction);
     file->addAction(signMessageAction);
     file->addAction(verifyMessageAction);
-    file->addSeparator();
     file->addAction(quitAction);
 
     QMenu *settings = appMenuBar->addMenu(tr("&Settings"));
@@ -384,12 +383,10 @@ void EycoGUI::createMenuBar()
     settings->addAction(changePassphraseAction);
     settings->addAction(unlockWalletAction);
     settings->addAction(lockWalletAction);
-    settings->addSeparator();
     settings->addAction(optionsAction);
 
     QMenu *help = appMenuBar->addMenu(tr("&Help"));
     help->addAction(openRPCConsoleAction);
-    help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
 }
@@ -398,7 +395,7 @@ static QWidget* makeToolBarSpacer()
 {
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    spacer->setStyleSheet("QWidget { background: none; }");
+    spacer->setStyleSheet("QWidget { background: #2E5E65; }");
     return spacer;
 }
 
@@ -407,42 +404,34 @@ void EycoGUI::createToolBars()
 
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setObjectName("toolbar");
-    addToolBar(Qt::LeftToolBarArea,toolbar);
-    toolbar->setOrientation(Qt::Vertical);
+    addToolBar(Qt::TopToolBarArea,toolbar);
+    toolbar->setOrientation(Qt::Horizontal);
     toolbar->setMovable( false );
 
     toolbar = new QToolBar(tr("Hide toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
     toolbar->setObjectName("tabs");
-    toolbar->setStyleSheet("QToolButton { color: black; font-weight:bold;} QToolButton:hover { background-color: transparent } QToolButton:checked { background-color: transparent } QToolButton:pressed { background-color: transparent } #tabs { color: black; background-color: transparent;  }");
-
-    QLabel* header = new QLabel();
-    header->setMinimumSize(142, 142);
-    header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    header->setPixmap(QPixmap(":/images/header"));
-    header->setMaximumSize(180,180);
-    header->setScaledContents(true);
-    toolbar->addWidget(header);
+    toolbar->setStyleSheet("QToolButton { color: white; font-weight:bold;} QToolButton:hover { background-color: #2E5E65 } QToolButton:checked { background-color: #2E5E65 } QToolButton:pressed { background-color: #2E5E65 } #tabs { color: white; background-color: #2E5E65;  }");
 
     //QMenu *toolbarMenu = new QMenu();
     toolbar->addAction(overviewAction);
+        toolbar->addAction(sendCoinsAction);
     toolbar->addAction(receiveCoinsAction);
-    toolbar->addAction(sendCoinsAction);
+        toolbar->addAction(addressBookAction);
     toolbar->addAction(historyAction);
-    toolbar->addAction(addressBookAction);
     toolbar->addAction(masternodeManagerAction);
     toolbar->addAction(messageAction);
     netLabel = new QLabel();
 
     QWidget *spacer = makeToolBarSpacer();
     netLabel->setObjectName("netLabel");
-    netLabel->setStyleSheet("#netLabel { color: #efefef; }");
+    netLabel->setStyleSheet("#netLabel { color: #2E5E65; }");
     toolbar->addWidget(spacer);
     toolbar->setOrientation(Qt::Vertical);
     toolbar->setMovable(false);
 
-    addToolBar(Qt::LeftToolBarArea, toolbar);
+    addToolBar(Qt::TopToolBarArea, toolbar);
 
     foreach(QAction *action, toolbar->actions()) {
         toolbar->widgetForAction(action)->setFixedWidth(142);
