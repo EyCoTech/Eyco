@@ -24,10 +24,10 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
 
 #if (QT_VERSION >= 0x040700)
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->addressIn_SM->setPlaceholderText(tr("Enter a Eyco address (e.g. 8aVWAvxsUzgQfHWqbPTcXFWeDhvMEu7wJ2)"));
+    ui->addressIn_SM->setPlaceholderText(tr("Enter a Eyco address (e.g. CgzSt8jt5r4tQXKg8G4qrGEd6GSFXY7AA1)"));
     ui->signatureOut_SM->setPlaceholderText(tr("Click \"Sign Message\" to generate signature"));
 
-    ui->addressIn_VM->setPlaceholderText(tr("Enter a Eyco address (e.g. 8aVWAvxsUzgQfHWqbPTcXFWeDhvMEu7wJ2)"));
+    ui->addressIn_VM->setPlaceholderText(tr("Enter a Eyco address (e.g. CgzSt8jt5r4tQXKg8G4qrGEd6GSFXY7AA1)"));
     ui->signatureIn_VM->setPlaceholderText(tr("Enter Eyco signature"));
 #endif
 

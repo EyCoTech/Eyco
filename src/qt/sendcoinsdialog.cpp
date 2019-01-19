@@ -36,7 +36,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a Eyco address (e.g. 8aVWAvxsUzgQfHWqbPTcXFWeDhvMEu7wJ2)"));
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a Eyco address (e.g. CgzSt8jt5r4tQXKg8G4qrGEd6GSFXY7AA1)"));
 #endif
 
     addEntry();

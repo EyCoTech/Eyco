@@ -34,7 +34,7 @@ SendMessagesDialog::SendMessagesDialog(Mode mode, Type type, QWidget *parent) :
 #if QT_VERSION >= 0x040700
      /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     if(mode == SendMessagesDialog::Encrypted)
-        ui->addressFrom->setPlaceholderText(tr("Enter a Eyco address (e.g. 8aVWAvxsUzgQfHWqbPTcXFWeDhvMEu7wJ2)"));
+        ui->addressFrom->setPlaceholderText(tr("Enter a Eyco address (e.g. CgzSt8jt5r4tQXKg8G4qrGEd6GSFXY7AA1)"));
  #endif
     addEntry();
 
