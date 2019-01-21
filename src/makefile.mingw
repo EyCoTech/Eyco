@@ -62,13 +62,13 @@ OBJS= \
     obj/main.o \
     obj/net.o \
     obj/protocol.o \
-    obj/rpcclient.o \
-    obj/rpcprotocol.o \
-    obj/rpcserver.o \
-    obj/rpcmisc.o \
-    obj/rpcnet.o \
-    obj/rpcblockchain.o \
-    obj/rpcrawtransaction.o \
+    obj/rpc/rpcclient.o \
+    obj/rpc/rpcprotocol.o \
+    obj/rpc/rpcserver.o \
+    obj/rpc/rpcmisc.o \
+    obj/rpc/rpcnet.o \
+    obj/rpc/rpcblockchain.o \
+    obj/rpc/rpcrawtransaction.o \
     obj/timedata.o \
     obj/script.o \
     obj/sync.o \
@@ -88,9 +88,9 @@ ifeq (${USE_WALLET}, 1)
     OBJS += \
         obj/db.o \
         obj/miner.o \
-        obj/rpcdump.o \
-        obj/rpcmining.o \
-        obj/rpcwallet.o \
+        obj/rpc/rpcdump.o \
+        obj/rpc/rpcmining.o \
+        obj/rpc/rpcwallet.o \
         obj/wallet.o \
         obj/walletdb.o
 endif
