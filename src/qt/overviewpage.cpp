@@ -177,20 +177,20 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 anonymizedBalance)
+void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 AnonymizedBalance)
 {
     int unit = walletModel->getOptionsModel()->getDisplayUnit();
     currentBalance = balance;
     currentStake = stake;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    currentAnonymizedBalance = anonymizedBalance;
+    currentAnonymizedBalance = AnonymizedBalance;
     ui->labelBalance->setText(EycoUnits::formatWithUnit(unit, balance));
     ui->labelStake->setText(EycoUnits::formatWithUnit(unit, stake));
     ui->labelUnconfirmed->setText(EycoUnits::formatWithUnit(unit, unconfirmedBalance));
     ui->labelImmature->setText(EycoUnits::formatWithUnit(unit, immatureBalance));
     ui->labelTotal->setText(EycoUnits::formatWithUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
-    ui->labelAnonymized->setText(EycoUnits::formatWithUnit(unit, anonymizedBalance));
+    ui->labelAnonymized->setText(EycoUnits::formatWithUnit(unit, AnonymizedBalance));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users

@@ -32,7 +32,7 @@ public:
 
 public slots:
     void darkSendStatus();
-    void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 anonymizedBalance);
+    void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 AnonymizedBalance);
 
 signals:
     void transactionClicked(const QModelIndex &index);
