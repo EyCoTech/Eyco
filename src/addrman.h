@@ -27,7 +27,7 @@ private:
     int64_t nLastSuccess;
 
     // last try whatsoever by us:
-    // int64_t CAddress::nLastTry
+    int64_t nLastTry;
 
     // connection attempts since last successful attempt
     int nAttempts;
