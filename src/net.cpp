@@ -25,8 +25,8 @@
 #include <miniupnpc/upnperrors.h>
 #endif
 
-// Dump addresses to peers.dat every 10 minutes (600s)
-#define DUMP_ADDRESSES_INTERVAL 600
+// Dump addresses to peers.dat every 30 minutes (1800s)
+#define DUMP_ADDRESSES_INTERVAL 1800
 
 using namespace std;
 using namespace boost;
