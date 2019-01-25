@@ -173,7 +173,6 @@ HEADERS += src/qt/eycogui.h \
     src/base58.h \
     src/bignum.h \
     src/chainparams.h \
-    src/irc.h \
     src/chainparamsseeds.h \
     src/checkpoints.h \
     src/compat.h \
@@ -297,7 +296,6 @@ SOURCES += src/qt/eyco.cpp src/qt/eycogui.cpp \
     src/qt/eycoaddressvalidator.cpp \
     src/alert.cpp \
     src/chainparams.cpp \
-    src/irc.cpp \
     src/version.cpp \
     src/sync.cpp \
     src/txmempool.cpp \
