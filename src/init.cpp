@@ -304,15 +304,16 @@ strUsage += "\n" + _("Masternode options:") + "\n";
  *  Ensure that Eyco is running in a usable environment with all
  *  necessary library support.
  */
-bool InitSanityCheck(void)
+/** Sanity checks
+ *  Ensure that Bitcoin is running in a usable environment with all
+ *  necessary library support.
+ */
+bool InitSanityCheck()
 {
     if(!ECC_InitSanityCheck()) {
-        InitError("OpenSSL appears to lack support for elliptic curve cryptography. For more "
-                  "information, visit https://en.eyco.it/wiki/OpenSSL_and_EC_Libraries");
+        InitError("Elliptic curve cryptography sanity check failure. Aborting.");
         return false;
     }
-
-    // TODO: remaining sanity checks, see #4081
 
     return true;
 }

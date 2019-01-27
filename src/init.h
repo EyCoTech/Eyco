@@ -7,14 +7,26 @@
 
 #include "wallet.h"
 
-namespace boost {
-    class thread_group;
+#include <memory>
+#include <string>
+
+namespace boost
+{
+class thread_group;
 } // namespace boost
 
 extern CWallet* pwalletMain;
+void Interrupt();
 void StartShutdown();
 bool ShutdownRequested();
 void Shutdown();
+/**
+ * Initialization sanity checks: ecc init, sanity checks, dir lock.
+ * @note This can be done before daemonization. Do not call Shutdown() if this function fails.
+ * @pre Parameters should be parsed and config file should be read, AppInitParameterInteraction should have been called.
+ */
+bool AppInitSanityChecks();
+
 bool AppInit2(boost::thread_group& threadGroup);
 std::string HelpMessage();
 extern bool fOnlyTor;
