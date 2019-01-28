@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = Eyco-Qt
-VERSION = 1.1
+TARGET = Eyco-Wallet
+VERSION = 1.2
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 QT += core gui network printsupport
 DEFINES += ENABLE_WALLET
