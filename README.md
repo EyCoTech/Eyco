@@ -1,22 +1,37 @@
 VERSION NOTES
 ==============
 
+#V1 (No changes here as its the first release)
 
-V1 (No changes here as its the first release)
-
-EyCo Quark Crytocurrency V1 Official Release.
-Stable Client.
+EyCo Quark Crytocurrency V1 Official Release. Stable Client.
 
 
+#V1.1
 
-V1.1
-
-Stake Confirmations Corrected to 66 blocks instead of 200 blocks
-Shutdown process for Windows OS has been addressed
-Update to Network Nodes
-Updated Checkpoints
-Information corrected to display properly
+Stake Confirmations Corrected to 66 blocks instead of 200 blocks 
+Shutdown process for Windows OS has been addressed 
+Update to Network Nodes 
+Updated Checkpoints 
+Information corrected to display properly 
 Some small minor changes.
+
+
+#V1.2
+
+GUI Look Changed
+RPC files moved
+Algorithm files moved
+Qt file locations updated
+Boost Thread sleep adjusted
+Network Ping & Timeout adjusted
+Masternodes sync nodes adjusted
+I2P implementation removed
+IRC implementation removed
+Miniupnpc files removed
+Bitcoin branding removed
+Code cleaned up a bit
+Some small minor changes
+Noblks & protocol versions changed.
 
 
 
