@@ -78,25 +78,15 @@ bool fOnlyTor = false;
 // shutdown thing.
 //
 
-void ExitTimeout(void* parg)
-{
-#ifdef WIN32
-    MilliSleep(5000);
-    ExitProcess(0);
-#endif
-}
-
-bool ShutdownRequested()
-{
-    return fRequestShutdown;
-}
+volatile bool fRequestShutdown = false;
 
 void StartShutdown()
 {
-#ifdef QT_GUI
-    // ensure we leave the Qt main loop for a clean GUI exit (Shutdown() is called in eyco.cpp afterwards)
-    uiInterface.QueueShutdown();
-#endif
+    fRequestShutdown = true;
+}
+bool ShutdownRequested()
+{
+    return fRequestShutdown;
 }
 
 void Shutdown()
